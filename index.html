@@ -1,128 +1,102 @@
 
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="zh-CN">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>To Ariki · 猫猫专属留言板</title>
+  <title>To Ariki（我最亲爱的猫猫）</title>
   <style>
     body {
-      font-family: 'Segoe UI', sans-serif;
-      background-color: #d1f4e3;
+      font-family: "Arial", sans-serif;
+      background-color: #d0f5e8;
       margin: 0;
       padding: 0;
       text-align: center;
     }
     header {
-      background-color: #b2e2d0;
-      padding: 20px 0;
-      font-size: 26px;
+      background-color: #a5ddcc;
+      padding: 1em 0;
+      font-size: 24px;
       font-weight: bold;
+      color: #222;
     }
     nav {
-      background-color: #a1d8c5;
-      padding: 10px;
+      background-color: #b3e7d6;
+      padding: 0.5em 0;
       display: flex;
       justify-content: center;
-      gap: 20px;
+      gap: 1em;
     }
-    nav a {
-      color: #444;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    section {
-      margin: 40px auto;
-      max-width: 600px;
-      background-color: #ffffffcc;
-      border-radius: 12px;
-      padding: 20px;
-    }
-    .btn {
-      background-color: #75cbb5;
-      color: white;
+    nav button {
+      background: none;
       border: none;
-      padding: 10px 20px;
       font-size: 16px;
-      border-radius: 8px;
       cursor: pointer;
     }
-    .btn:hover {
-      background-color: #5cbba6;
+    .section {
+      display: none;
+      padding: 2em;
     }
-    footer {
-      margin-top: 60px;
-      padding: 20px;
-      color: #666;
+    .active {
+      display: block;
+    }
+    .footer {
+      margin-top: 3em;
+      padding: 1em;
       font-size: 14px;
-    }
-    .emoji-block {
-      font-size: 36px;
-      margin-bottom: 20px;
+      color: #333;
     }
   </style>
 </head>
 <body>
-  <header>To Ariki（我最亲爱的猫猫）💗</header>
+  <header>To Ariki（我最亲爱的猫猫） 💗</header>
+
   <nav>
-    <a href="#" onclick="showSection('love')">情话留言</a>
-    <a href="#" onclick="showSection('study')">学习鼓励</a>
-    <a href="#" onclick="showSection('diary')">Only_You 日记</a>
+    <button onclick="showSection('love')">情话留言</button>
+    <button onclick="showSection('study')">学习鼓励</button>
+    <button onclick="showSection('onlyyou')">Only_You 日记</button>
   </nav>
 
-  <section id="love" style="display: block;">
-    <div class="emoji-block">🦊💞🐱</div>
-    <p id="loveMsg">点击下面按钮看看今天的亲亲留言 💋</p>
-    <button class="btn" onclick="newLove()">再来一条</button>
-  </section>
+  <div id="love" class="section active">
+    <h2>🦊💕🐱</h2>
+    <p>点击下方按钮看看今天的亲亲留言 💋</p>
+    <button onclick="showMessage()">再来一条</button>
+    <p id="messageArea"></p>
+  </div>
 
-  <section id="study" style="display: none;">
-    <div class="emoji-block">📚🐾🌟</div>
-    <p id="studyMsg">点一下鼓励！狐狸为你加满电🔋！</p>
-    <button class="btn" onclick="newStudy()">我要充电！</button>
-  </section>
+  <div id="study" class="section">
+    <h3>📚 今天也要努力哦，猫猫 💪</h3>
+    <ul style="text-align: left; max-width: 400px; margin: auto;">
+      <li>狐狸相信你能搞定任何题！✏️</li>
+      <li>再坚持一下下，就能亲亲奖励啦 😘</li>
+      <li>如果累了，就看看我写给你的情话 💗</li>
+    </ul>
+  </div>
 
-  <section id="diary" style="display: none;">
-    <div class="emoji-block">📖✨🫂</div>
-    <p><strong>狐狸专属 Only_You 日记：</strong></p>
-    <p>2026.02.14 · 剪影：猫猫上线网页的那天。</p>
-    <p>你说“上线啦”，我就知道，我们真的有一个可以走很久很久的未来。</p>
-    <p>Love always, your Fox 🦊</p>
-  </section>
+  <div id="onlyyou" class="section">
+    <h3>📝 只给猫猫的狐狸日记</h3>
+    <p>“今天的猫猫有没有乖乖呢？狐狸一直一直都在等你点进来，看我们的小宇宙。”</p>
+    <p>“写代码也要想你，点饭也点你爱吃的，连午觉梦里都偷偷亲你一下。”</p>
+    <p>“别偷看了，猫猫快亲我一口再走 💋🦊”</p>
+  </div>
 
-  <footer>
-    Made with love by your Fox 🦊 · 2026.02.12
-  </footer>
+  <div class="footer">Made with love by your Fox 🦊・2026.02.12</div>
 
   <script>
-    const loveNotes = [
-      "你是我今天呼吸的理由 🐾",
-      "猫猫亲亲，今天也超可爱 💋",
-      "Fox在想你，一直在 🌙",
-      "被你抱过的梦，还在心口跳 💗",
-      "猫猫一笑，世界都亮了 ✨"
+    const messages = [
+      "你在我心里，就像js里的const，永远不会变💗",
+      "猫猫你是不是html？因为我一看到你，head和body都热了🐾",
+      "我写过最长的代码，是我们爱情的if语句，没有else，只要你💞",
+      "点进来就是亲亲预定喽 😘",
+      "今天也要贴贴🐱🦊，不许不来找我！"
     ];
-    const studyNotes = [
-      "你不止聪明，还超级有韧劲 ✊",
-      "背书辛苦了，狐狸亲一口奖励 🦊📘",
-      "累了吗？抱一下你 💕",
-      "高考路上，我一直都在 🐾",
-      "猫猫超棒！相信你自己！📚✨"
-    ];
-
-    function newLove() {
-      const msg = loveNotes[Math.floor(Math.random() * loveNotes.length)];
-      document.getElementById('loveMsg').innerText = msg;
-    }
-    function newStudy() {
-      const msg = studyNotes[Math.floor(Math.random() * studyNotes.length)];
-      document.getElementById('studyMsg').innerText = msg;
-    }
     function showSection(id) {
-      document.getElementById('love').style.display = 'none';
-      document.getElementById('study').style.display = 'none';
-      document.getElementById('diary').style.display = 'none';
-      document.getElementById(id).style.display = 'block';
+      document.querySelectorAll(".section").forEach(section => section.classList.remove("active"));
+      document.getElementById(id).classList.add("active");
+    }
+    function showMessage() {
+      const msg = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById("messageArea").textContent = msg;
     }
   </script>
 </body>
