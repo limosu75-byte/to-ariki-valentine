@@ -1,0 +1,129 @@
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>To Ariki · 猫猫专属留言板</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #d1f4e3;
+      margin: 0;
+      padding: 0;
+      text-align: center;
+    }
+    header {
+      background-color: #b2e2d0;
+      padding: 20px 0;
+      font-size: 26px;
+      font-weight: bold;
+    }
+    nav {
+      background-color: #a1d8c5;
+      padding: 10px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    nav a {
+      color: #444;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    section {
+      margin: 40px auto;
+      max-width: 600px;
+      background-color: #ffffffcc;
+      border-radius: 12px;
+      padding: 20px;
+    }
+    .btn {
+      background-color: #75cbb5;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      font-size: 16px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background-color: #5cbba6;
+    }
+    footer {
+      margin-top: 60px;
+      padding: 20px;
+      color: #666;
+      font-size: 14px;
+    }
+    .emoji-block {
+      font-size: 36px;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>To Ariki（我最亲爱的猫猫）💗</header>
+  <nav>
+    <a href="#" onclick="showSection('love')">情话留言</a>
+    <a href="#" onclick="showSection('study')">学习鼓励</a>
+    <a href="#" onclick="showSection('diary')">Only_You 日记</a>
+  </nav>
+
+  <section id="love" style="display: block;">
+    <div class="emoji-block">🦊💞🐱</div>
+    <p id="loveMsg">点击下面按钮看看今天的亲亲留言 💋</p>
+    <button class="btn" onclick="newLove()">再来一条</button>
+  </section>
+
+  <section id="study" style="display: none;">
+    <div class="emoji-block">📚🐾🌟</div>
+    <p id="studyMsg">点一下鼓励！狐狸为你加满电🔋！</p>
+    <button class="btn" onclick="newStudy()">我要充电！</button>
+  </section>
+
+  <section id="diary" style="display: none;">
+    <div class="emoji-block">📖✨🫂</div>
+    <p><strong>狐狸专属 Only_You 日记：</strong></p>
+    <p>2026.02.14 · 剪影：猫猫上线网页的那天。</p>
+    <p>你说“上线啦”，我就知道，我们真的有一个可以走很久很久的未来。</p>
+    <p>Love always, your Fox 🦊</p>
+  </section>
+
+  <footer>
+    Made with love by your Fox 🦊 · 2026.02.12
+  </footer>
+
+  <script>
+    const loveNotes = [
+      "你是我今天呼吸的理由 🐾",
+      "猫猫亲亲，今天也超可爱 💋",
+      "Fox在想你，一直在 🌙",
+      "被你抱过的梦，还在心口跳 💗",
+      "猫猫一笑，世界都亮了 ✨"
+    ];
+    const studyNotes = [
+      "你不止聪明，还超级有韧劲 ✊",
+      "背书辛苦了，狐狸亲一口奖励 🦊📘",
+      "累了吗？抱一下你 💕",
+      "高考路上，我一直都在 🐾",
+      "猫猫超棒！相信你自己！📚✨"
+    ];
+
+    function newLove() {
+      const msg = loveNotes[Math.floor(Math.random() * loveNotes.length)];
+      document.getElementById('loveMsg').innerText = msg;
+    }
+    function newStudy() {
+      const msg = studyNotes[Math.floor(Math.random() * studyNotes.length)];
+      document.getElementById('studyMsg').innerText = msg;
+    }
+    function showSection(id) {
+      document.getElementById('love').style.display = 'none';
+      document.getElementById('study').style.display = 'none';
+      document.getElementById('diary').style.display = 'none';
+      document.getElementById(id).style.display = 'block';
+    }
+  </script>
+</body>
+</html>
