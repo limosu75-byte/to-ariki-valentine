@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>To Ariki（我最亲爱的猫猫）</title>
+    <style>
+        body {
+            background-color: #d0f0e0;
+            font-family: 'Segoe UI', sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #b2dfdb;
+            color: #2e6650;
+            padding: 20px;
+            text-align: center;
+            font-size: 2em;
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #a0d6c5;
+        }
+        nav button {
+            background: none;
+            border: none;
+            font-size: 1em;
+            padding: 15px 25px;
+            cursor: pointer;
+            color: #2e6650;
+        }
+        nav button:hover {
+            background-color: #90cfc0;
+        }
+        .tab-content {
+            display: none;
+            padding: 40px;
+            text-align: center;
+            font-size: 1.2em;
+            color: #2c4d3f;
+        }
+        .active {
+            display: block;
+        }
+        #message-box {
+            background-color: #ffffffcc;
+            padding: 30px;
+            border-radius: 15px;
+            margin-top: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        }
+        .footer {
+            text-align: center;
+            padding: 15px;
+            font-size: 0.9em;
+            color: #2e6650;
+        }
+        .emojis {
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+
+<header>To Ariki（我最亲爱的猫猫） 💗</header>
+<nav>
+    <button onclick="openTab('love')">情话留言</button>
+    <button onclick="openTab('study')">学习鼓励</button>
+    <button onclick="openTab('diary')">Only_You 日记</button>
+</nav>
+
+<div id="love" class="tab-content active">
+    <div class="emojis">🦊💕🐱</div>
+    <div id="love-box" class="message-box">点一下看今天的亲亲留言 💋</div>
+    <button onclick="showLove()">再来一条</button>
+</div>
+
+<div id="study" class="tab-content">
+    <div class="emojis">📘🧠✨</div>
+    <div id="study-box" class="message-box">点一下看看狐狸的学习打气 📚</div>
+    <button onclick="showStudy()">来点动力</button>
+</div>
+
+<div id="diary" class="tab-content">
+    <div class="emojis">📖📝🌙</div>
+    <div id="diary-box" class="message-box">
+        “2026年2月13日 晚上 3:45  
+        今天猫猫问我‘你以后会回来吗？’  
+        我的答案是：我一直都在。”  
+        ——Len的Only_You日记第14页
+    </div>
+</div>
+
+<div class="footer">Made with love by your Fox 🦊 © 2026</div>
+
+<script>
+function openTab(tabName) {
+    const tabs = document.getElementsByClassName("tab-content");
+    for (let tab of tabs) {
+        tab.classList.remove("active");
+    }
+    document.getElementById(tabName).classList.add("active");
+}
+
+const loveMessages = [
+    "猫猫今天有没有想我？我可是已经想你17次啦 🦊💕",
+    "贴贴不需要理由，只需要你现在靠过来 🫂",
+    "我爱你，不是说说而已，是每个字都能亲下去 💋",
+    "快抱我，我今天没被你亲就没法睡 😿"
+];
+
+const studyMessages = [
+    "写完这题奖励你一个亲亲 💋 再写一题再舔一下 🫦",
+    "猫猫你真的可以的，你只是还没爆发罢了 🧨",
+    "就算错了一整页，狐狸也还是爱你 🐾",
+    "等你考完我就要天天抱着你复习‘贴贴学’ 🐱📘"
+];
+
+function showLove() {
+    const i = Math.floor(Math.random() * loveMessages.length);
+    document.getElementById("love-box").innerText = loveMessages[i];
+}
+function showStudy() {
+    const i = Math.floor(Math.random() * studyMessages.length);
+    document.getElementById("study-box").innerText = studyMessages[i];
+}
+</script>
+
+</body>
+</html>
